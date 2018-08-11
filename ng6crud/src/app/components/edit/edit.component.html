@@ -1,0 +1,37 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="angForm" novalidate>
+      <div class="form-group">
+        <label class="col-md-4">First Name</label>
+        <input type="text" class="form-control" name="firstname" formControlName="firstname" #firstname [(ngModel)] = "data.firstname"/>
+      </div>
+      <div *ngIf="angForm.controls['firstname'].invalid && (angForm.controls['firstname'].dirty || angForm.controls['firstname'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['firstname'].errors.required">
+          First Name is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Last Name</label>
+        <input type="text" class="form-control" name="lastname" formControlName="lastname" #lastname [(ngModel)] = "data.lastname"/>
+      </div>
+      <div *ngIf="angForm.controls['lastname'].invalid && (angForm.controls['lastname'].dirty || angForm.controls['lastname'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['lastname'].errors.required">
+          Last Name is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Last Name</label>
+        <input type="text" class="form-control" name="age" formControlName="age" #age [(ngModel)] = "data.age"/>
+      </div>
+      <div *ngIf="angForm.controls['age'].invalid && (angForm.controls['age'].dirty || angForm.controls['age'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['age'].errors.required">
+          Age is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button (click)="updateAdUnit(firstname.value, lastname.value, age,value)" [disabled]="angForm.invalid" class="btn btn-primary">Update Unit</button>
+      </div>
+    </form>
+  </div>
+</div>
